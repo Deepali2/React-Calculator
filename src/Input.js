@@ -1,14 +1,14 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './Input.css';
 
-class Input extends Component {
-  render() {
-    return (
-      <div className='Input'> 
-        This is the input bar
-      </div>
-    );
-  }
+const Input = () => {
+  return (
+    <form>
+      <label>
+        <input  type='text' name='name'  />
+      </label>
+    </form>
+  );
 }
 
 export default Input;
