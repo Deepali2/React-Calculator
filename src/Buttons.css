@@ -1,0 +1,8 @@
+.Buttons {
+  display: inblock;
+  background-color: yellow;
+  height: 480px;
+  width: 400px;
+  margin-left: 50px;
+  margin-top: 20px;
+}

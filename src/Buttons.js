@@ -1,9 +1,12 @@
 import React from 'react';
 import './Buttons.css';
+import EqualsButton from './EqualsButton';
 
 const Buttons = () => {
   return (
-    <div>The Buttons will come here</div>
+    <div className='Buttons'>
+      <EqualsButton />
+    </div>
   );
 }
 
