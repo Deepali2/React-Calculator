@@ -8,8 +8,8 @@ const Buttons = () => {
       <div className='Operators'>            
         <button name='+'>+</button>
         <button name='-'>-</button>
-        <button name='÷'>÷</button>
         <button name='×'>×</button>
+        <button name='÷'>÷</button>
       </div>
       <div className='AllButtons'>
         <div>
