@@ -13,6 +13,18 @@ class Calculator extends Component {
       resultDisplayed: false,
       input:'5+4-8.7'
     };
+    this.clear = this.clear.bind(this);
+    this.equalsPressed = this.equalsPressed.bind(this);
+    this.numberButtonClick = this.numberButtonClick.bind(this);
+    this.operatorButtonClick = this.operatorButtonClick.bind(this);
+  }
+
+  numberButtonClick = () => {
+
+  }
+
+  operatorButtonClick = () => {
+    
   }
 
   clear = () => {
@@ -47,7 +59,12 @@ class Calculator extends Component {
         <h1>CALCULATOR</h1>
         <div className='Calculator'>
           <Input input={this.state.input}/>
-          <Buttons handleButtonClick={this.handleButtonClick}/>
+          <Buttons 
+            numberButtonClick={this.numberButtonClick}
+            operatorButtonClick={this.operatorButtonClick}
+            equalsPressed={this.equalsPressed}
+            clear={this.clear}
+          />
         </div>
         <h5>Designed and Maintained by deepaligarg1001@gmail.com</h5>
       </div>
