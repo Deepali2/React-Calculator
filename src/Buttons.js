@@ -6,10 +6,10 @@ const Buttons = (props) => {
   return (
     <div className='Buttons'> 
       <div className='Operators'>            
-        <button type='button' value='+'>+</button>
-        <button type='button' value='-'>-</button>
-        <button type='button' value='×'>×</button>
-        <button type='button' value='÷'>÷</button>
+        <button type='button' value='+' onClick={props.operatorButtonClick}>+</button>
+        <button type='button' value='-' onClick={props.operatorButtonClick}>-</button>
+        <button type='button' value='×' onClick={props.operatorButtonClick}>×</button>
+        <button type='button' value='÷' onClick={props.operatorButtonClick}>÷</button>
       </div>
       <div className='AllButtons'>
         <div>

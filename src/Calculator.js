@@ -50,8 +50,26 @@ class Calculator extends Component {
     }
   }
 
-  operatorButtonClick = () => {
+  operatorButtonClick = (e) => {
+    //if the input string is empty then return 
+    let inputString = this.state.input;
+    if (inputString.length === 0) return;
 
+    //if the last character is an operator then replace it with the current operator
+    let lastCharac = inputString[inputString.length - 1];
+    let operationsKeys = Object.keys(operations);
+    if (operationsKeys.indexOf(lastCharac) !== -1) {
+      let newString = inputString.substring(0, inputString.length - 1) + e.target.value;
+      this.setState({
+        input: newString
+      })
+      //else add the operator to the input string
+    } else {
+      let newString = this.state.input + e.target.value;
+      this.setState({
+        input: newString
+      })
+    }    
   }
 
  
