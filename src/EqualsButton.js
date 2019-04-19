@@ -1,9 +1,9 @@
 import React from 'react';
 import './EqualsButton.css';
 
-const EqualsButton = () => {
+const EqualsButton = (props) => {
   return (
-    <button className='EqualsButton'>=</button>
+    <button className='EqualsButton' onClick={props.equalsPressed}>=</button>
   );
 }
 

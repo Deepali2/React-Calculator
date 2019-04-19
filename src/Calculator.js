@@ -11,7 +11,7 @@ class Calculator extends Component {
     super();
     this.state= {
       resultDisplayed: false,
-      input:'5+4-8.7'
+      input:''
     };
     this.clear = this.clear.bind(this);
     this.equalsPressed = this.equalsPressed.bind(this);
@@ -19,19 +19,45 @@ class Calculator extends Component {
     this.operatorButtonClick = this.operatorButtonClick.bind(this);
   }
 
-  numberButtonClick = () => {
+  clear = () => {
+    this.setState({
+      input: '',
+      resultDisplayed: false
+    });
+  }
 
+  numberButtonClick = (e) => {
+    let currentString = this.state.input;
+    const operationChars = Object.keys(operations);
+    let lastChar = currentString[currentString.length - 1];
+    if (this.state.resultDisplayed === false) {
+      currentString += e.target.value;
+      this.setState({
+        input: currentString
+      });
+      //if the result Displayed is true and if the user pressed an operation key
+    } else if (this.state.resultDisplayed === true && operationChars.indexOf(lastChar)!== -1) {
+      currentString += e.target.value;
+      this.setState({
+        resultDisplayed: false,
+        input: currentString
+      }) //we need to keep adding to the string
+    } else {
+      this.setState({
+        resultDisplayed: false,
+        input: e.target.value
+      })
+    }
   }
 
   operatorButtonClick = () => {
-    
+
   }
 
-  clear = () => {
-    this.setState({input: ''});
-  }
+ 
 
   equalsPressed = () => {
+    if(this.state.input === '') return;
     let inputString = this.state.input;
     let numbers = inputString.split(/\+|-|×|÷/g);//array of numbers
     let operators = inputString.replace(/[0-9]|\./g, '').split('');//array of operators
@@ -40,11 +66,11 @@ class Calculator extends Component {
       let currentOperator = operationChars[i];
       let currentOperationFunction = operations[currentOperator];
       let indexOfOperationToExecute = operators.indexOf(currentOperator);
-      while(indexOfOperationToExecute != -1) {
+      while(indexOfOperationToExecute !== -1) {
         let currentResult = currentOperationFunction(numbers[indexOfOperationToExecute], numbers[indexOfOperationToExecute + 1]);
         numbers.splice(indexOfOperationToExecute, 2, currentResult);
         operators.splice(indexOfOperationToExecute, 1);
-        let indexOfOperationToExecute = operators.indexOf(currentOperator);
+        indexOfOperationToExecute = operators.indexOf(currentOperator);
       }
     }
     this.setState({

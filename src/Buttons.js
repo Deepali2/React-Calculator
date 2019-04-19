@@ -6,35 +6,35 @@ const Buttons = (props) => {
   return (
     <div className='Buttons'> 
       <div className='Operators'>            
-        <button name='+'>+</button>
-        <button name='-'>-</button>
-        <button name='×'>×</button>
-        <button name='÷'>÷</button>
+        <button type='button' value='+'>+</button>
+        <button type='button' value='-'>-</button>
+        <button type='button' value='×'>×</button>
+        <button type='button' value='÷'>÷</button>
       </div>
       <div className='AllButtons'>
         <div>
           <div className='numbers'>
-            <button name='7' onClick={props.numberButtonCLick}>7</button>
-            <button name='8' onClick={props.numberButtonCLick}>8</button>
-            <button name='9' onClick={props.numberButtonCLick}>9</button>
+            <button type='button' value='7' onClick={props.numberButtonClick}>7</button>
+            <button type='button' value='8' onClick={props.numberButtonClick}>8</button>
+            <button type='button' value='9' onClick={props.numberButtonClick}>9</button>
           </div>
           <div className='numbers'>
-            <button name='4' onClick={props.numberButtonCLick}>4</button>
-            <button name='5' onClick={props.numberButtonCLick}>5</button>
-            <button name='6' onClick={props.numberButtonCLick}>6</button>
+            <button type='button' value='4' onClick={props.numberButtonClick}>4</button>
+            <button type='button' value='5' onClick={props.numberButtonClick}>5</button>
+            <button type='button' value='6' onClick={props.numberButtonClick}>6</button>
           </div>
           <div className='numbers'>
-            <button name='1' onClick={props.numberButtonCLick}>1</button>
-            <button name='2' onClick={props.numberButtonCLick}>2</button>
-            <button name='3' onClick={props.numberButtonCLick}>3</button>
+            <button type='button' value='1' onClick={props.numberButtonClick}>1</button>
+            <button type='button' value='2' onClick={props.numberButtonClick}>2</button>
+            <button type='button' value='3' onClick={props.numberButtonClick}>3</button>
           </div>
           <div className='numbers'>
-            <button name='0' onClick={props.numberButtonCLick}>0</button>
-            <button name='.' onClick={props.numberButtonCLick}>.</button>
-            <button name='C' onClick={props.clear}>C</button>
+            <button type='button' value='0' onClick={props.numberButtonClick}>0</button>
+            <button type='button' value='.' onClick={props.numberButtonClick}>.</button>
+            <button type='button' value='C' onClick={props.clear}>C</button>
           </div>                   
         </div>
-        <EqualsButton /> 
+        <EqualsButton equalsPressed={props.equalsPressed}/> 
       </div>
     </div>
   );
