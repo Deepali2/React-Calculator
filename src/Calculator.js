@@ -77,22 +77,43 @@ class Calculator extends Component {
   equalsPressed = () => {
     if(this.state.input === '') return;
     let inputString = this.state.input;
+
+    //if the input is just a number then pressing equals does nothing
+    if(Number(inputString)) return;
+    
+    //else figure out the answer
     let numbers = inputString.split(/\+|-|×|÷/g);//array of numbers
-    let operators = inputString.replace(/[0-9]|\./g, '').split('');//array of operators
-    const operationChars = Object.keys(operations); //[+, -, ×, ÷]
+    let operators = inputString.replace(/[0-9]|\./g, '').split('');//array of operators    
+    const operationChars = Object.keys(operations); //[÷, ×, +, -]
+
     for (let i = 0; i < operationChars.length; i++) {
-      let currentOperator = operationChars[i];
-      let currentOperationFunction = operations[currentOperator];
+      let currentOperator = operationChars[i];  //will start with ÷
+      let currentOperationFunction = operations[currentOperator]; //get the function associated with the operator
       let indexOfOperationToExecute = operators.indexOf(currentOperator);
       while(indexOfOperationToExecute !== -1) {
         let currentResult = currentOperationFunction(numbers[indexOfOperationToExecute], numbers[indexOfOperationToExecute + 1]);
         numbers.splice(indexOfOperationToExecute, 2, currentResult);
         operators.splice(indexOfOperationToExecute, 1);
         indexOfOperationToExecute = operators.indexOf(currentOperator);
-      }
+      }       
     }
+    
+    // let result = numbers[0]; //it is a string
+    let result = '' + numbers[0];
+    //if the result is a long decimal
+    let MAXLENGTH = 13;
+    if (result.length > MAXLENGTH) {
+      //show the rounded value so length of string displayed is 13
+      let truncatedResult = result.substring(0, MAXLENGTH + 2) //get till the 14th place
+      if (Number(truncatedResult[truncatedResult.length - 1]) >= 5) {
+        let lastDigit = Number(truncatedResult[truncatedResult.length - 1]);
+        lastDigit++;
+        result = truncatedResult.substring(0, MAXLENGTH - 1) + lastDigit;
+      }
+    }    
+    //set the state
     this.setState({
-      input: numbers[0],
+      input: result,
       resultDisplayed: true
     });
   }
